@@ -25,6 +25,11 @@ final class PlayoffTeam
     return other instanceof PlayoffTeam ? Objects.equals(label, ((PlayoffTeam)other).label) : false;
   }
 
+  char getLabel()
+  {
+    return label;
+  }
+
   int getScore()
   {
     return score;

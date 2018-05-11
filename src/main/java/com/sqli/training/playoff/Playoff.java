@@ -2,6 +2,7 @@ package com.sqli.training.playoff;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.Map.Entry;
 import java.util.function.Function;
@@ -35,7 +36,8 @@ final class Playoff
         .entrySet()
         .stream()
         .sorted(Entry.<PlayoffTeam, Integer>comparingByValue()
-            .reversed())
+            .reversed()
+            .thenComparing(Entry.comparingByKey(Comparator.comparing(PlayoffTeam::getLabel))))
         .map(Entry::getKey)
         .limit(4)
         .collect(Collectors.toCollection(ArrayDeque::new));
